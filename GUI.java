@@ -18,6 +18,7 @@ private JLabel label1,label2,label3,label4,label5,label6,label7,label8,label9,la
 private JTextField txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9,txt10;
 private JButton button;
 
+
 public GUI(){
 label1=new JLabel("first number");
 label2=new JLabel("second number");
@@ -83,19 +84,24 @@ public void actionPerformed(java.awt.event.ActionEvent e) {
 	int s8=Integer.parseInt(txt8.getText());
 	int s9=Integer.parseInt(txt9.getText());
 	int s10=Integer.parseInt(txt10.getText());
-	int [] array= new int[10];
-	array[0]=s1;
-	array[1]=s2;
-	array[2]=s3;
-	array[3]=s4;
-	array[4]=s5;
-	array[5]=s6;
-	array[6]=s7;
-	array[7]=s8;
-	array[8]=s9;
-	array[9]=s10;
-	Arrays.sort(array);
-	JOptionPane.showMessageDialog(null,"the number from small to large is : " + array[0]+"  "+ array[1]+"  "+ array[2]+"  "+ array[3]+"  "+ array[4]+"  "+ array[5]+"  "
-	+ array[6]+"  "+ array[7]+"  "+ array[8]+"  "+ array[9]);
+	int [] unsortedList={s1,s2,s3,s4,s5,s6,s7,s8,s9,s10};
+	int [] sortedList = sortedList(unsortedList);
+	for (int i=0;i< sortedList.length; i++){
+		System.out.println(sortedList[i]);
+	}
+	}
+public static int [] sortedList (int [] list){
+	for(int i =0 ; i<list.length; i++)
+		for(int j=1+i; j<list.length;j++)
+			if(list[i]>list[j])
+				swap(list,i,j);
+		return list;
+	
 }
+public static void swap (int [] list, int i,int j) {
+	int temp = list [i];
+	list[i]=list[j];
+	list [j] =temp;
+	}
+
 }
